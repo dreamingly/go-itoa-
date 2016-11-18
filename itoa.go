@@ -2,8 +2,9 @@ package itoa
 
 import "strconv"
 
-func B2S(bs []uint8) []string {
+func B2S(bs []uint8) string {
     var str []string
+    var target string
     for _, b := range bs {
         if (int(b) - int(b) % 16) / 16 >= 10 {
             switch ((int(b) - int(b) % 16) / 16) {
@@ -42,5 +43,8 @@ func B2S(bs []uint8) []string {
             str = append(str, strconv.Itoa(int(b) % 16))
         }
     }
-    return str
+    for i, _ := range str {
+        target += str[i]
+    }
+    return target
 }
